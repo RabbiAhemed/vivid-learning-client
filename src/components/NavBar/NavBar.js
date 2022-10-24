@@ -43,8 +43,12 @@ const NavBar = () => {
             <div className="d-flex right-half">
               <Button variant="link">Dark mode</Button>
               <Button variant="link">Light mode</Button>
-              <Button variant="link">Login</Button>
-              <Button variant="link">Register</Button>
+              <Link to="/login">
+                <Button variant="link">Login</Button>
+              </Link>
+              <Link to="/register">
+                <Button variant="link">Register</Button>
+              </Link>
             </div>
           </Navbar.Collapse>
         </Container>
