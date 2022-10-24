@@ -1,0 +1,26 @@
+.menu {
+  background-color: #fff;
+}
+
+.logo {
+  width: 20%;
+}
+
+.logo-pair {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+nav a {
+  text-decoration: none;
+  color: black;
+  background-color: #ffffff;
+}
+.left-part {
+  margin-left: 20%;
+}
+.right-half button {
+  /* margin: 0 2%; */
+  font: bold;
+  text-decoration: none;
+}
