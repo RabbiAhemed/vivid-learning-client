@@ -1,19 +1,22 @@
-import React from "react";
+import React, { useContext } from "react";
 import Button from "react-bootstrap/Button";
 import Form from "react-bootstrap/Form";
 import { FaGoogle, FaGithub } from "react-icons/fa";
 import { Link } from "react-router-dom";
-import UserContext, { AuthContext } from "../../UserContext/UserContext";
+import { AuthContext } from "../../UserContext/UserContext";
 const Login = () => {
-  const {} = UserContext(AuthContext);
+  const { googleSignIn } = useContext(AuthContext);
   const handleSubmit = (event) => {
     event.preventDefault();
     const form = event.target;
     const name = form.name.value;
     const email = form.email.value;
     const password = form.password.value;
-    console.log(name, email, password);
+
     form.reset();
+  };
+  const handleGoogleSignIn = () => {
+    googleSignIn();
   };
   return (
     <div className="w-50 mx-auto">
@@ -24,7 +27,7 @@ const Login = () => {
               <img
                 src="https://mdbcdn.b-cdn.net/img/Photos/new-templates/bootstrap-login-form/draw2.webp"
                 className="img-fluid"
-                alt="Sample image"
+                alt="Sample"
               />
             </div>
             <div className="col-md-8 col-lg-6 col-xl-4 offset-xl-1">
@@ -34,6 +37,7 @@ const Login = () => {
                   <button
                     type="button"
                     className="btn btn-light btn-floating mx-1"
+                    onClick={handleGoogleSignIn}
                   >
                     <FaGoogle></FaGoogle>
                   </button>
@@ -91,7 +95,7 @@ const Login = () => {
                     Login
                   </button>
                   <p className="small fw-bold mt-2 pt-1 mb-0">
-                    Don't have an account?{" "}
+                    Don't have an account?
                     <Link to="/register" className="link-success">
                       Register
                     </Link>
