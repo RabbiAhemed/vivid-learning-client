@@ -1,9 +1,10 @@
 import React, { useContext, useState } from "react";
 import Button from "react-bootstrap/Button";
 import Form from "react-bootstrap/Form";
+import { Link } from "react-router-dom";
 import { AuthContext } from "../../UserContext/UserContext";
 const Register = () => {
-  const { createUser } = useContext(AuthContext);
+  const { createUser, picture } = useContext(AuthContext);
   const [success, setSuccess] = useState(false);
   const handleSubmit = (event) => {
     event.preventDefault();
@@ -11,12 +12,15 @@ const Register = () => {
     const name = form.name.value;
     const email = form.email.value;
     const password = form.password.value;
-    const image = form.image.value;
+    const imageUrl = form.image.value;
+
     createUser(email, password)
       .then((result) => {
         const user = result.user;
-        console.log(user);
+        user.photoURL = imageUrl;
+        user.displayName = name;
         setSuccess(true);
+        // picture = imageUrl;
         form.reset();
       })
       .catch((error) => console.log(error));
@@ -69,8 +73,14 @@ const Register = () => {
           />
         </Form.Group>
         <Button variant="primary" type="submit">
-          Submit
+          Register
         </Button>
+        <p className="small fw-bold mt-2 pt-1 mb-0">
+          Already have an account?
+          <Link to="/login" className="link-success">
+            Login
+          </Link>
+        </p>
       </Form>
     </div>
   );

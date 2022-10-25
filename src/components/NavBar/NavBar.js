@@ -1,16 +1,23 @@
-import React from "react";
+import React, { useContext } from "react";
 import Container from "react-bootstrap/Container";
 import Button from "react-bootstrap/Button";
 import Nav from "react-bootstrap/Nav";
 import Navbar from "react-bootstrap/Navbar";
 import { Link, NavLink } from "react-router-dom";
 import "./NavBar.css";
+import { AuthContext } from "../../UserContext/UserContext";
 const NavBar = () => {
+  const { user, logOutUser } = useContext(AuthContext);
+  // console.log(picture);
+
+  const showName = () => {
+    console.log("hovered");
+  };
   return (
     <div className="menu fw-bold">
       <Navbar bg="" expand="lg">
         <Container fluid>
-          <Link to="/">
+          <NavLink to="/">
             <div className="logo-pair">
               <img
                 src="https://i.ibb.co/dtBX1L6/downloader-transparent.png"
@@ -18,19 +25,33 @@ const NavBar = () => {
                 border="0"
                 className="logo"
               />
-              <h2 className="fs-3 fw-bolder">Vivid Learning</h2>
+              <h2 className="vivid">Vivid Learning</h2>
             </div>
-          </Link>
+          </NavLink>
           <div>
-            <Link className="left-part" to="/courses">
+            <NavLink className="left-part" to="/courses">
               Courses
-            </Link>
-            <Link className="left-part" to="/faq">
+            </NavLink>
+            <NavLink className="left-part" to="/faq">
               Faq
-            </Link>
-            <Link className="left-part" to="/blog">
+            </NavLink>
+            <NavLink className="left-part" to="/blog">
               Blog
-            </Link>
+            </NavLink>
+            {user?.photoURL && (
+              <NavLink
+                onMouseEnter={showName}
+                className="left-part"
+                to="/login"
+              >
+                <img
+                  src="https://i.ibb.co/c25GsfB/removed-bg.png"
+                  alt="removed-bg"
+                  border="0"
+                  className="user-image rounded-circle border border-primary "
+                />
+              </NavLink>
+            )}
           </div>
 
           <Navbar.Toggle aria-controls="navbarScroll" />
@@ -40,12 +61,19 @@ const NavBar = () => {
               style={{ maxHeight: "100px" }}
               navbarScroll
             ></Nav>
+
             <div className="d-flex right-half">
               <Button variant="link">Dark mode</Button>
               <Button variant="link">Light mode</Button>
-              <Link to="/login">
-                <Button variant="link">Login</Button>
-              </Link>
+              {user && user?.uid ? (
+                <Button onClick={logOutUser} variant="link">
+                  Logout
+                </Button>
+              ) : (
+                <NavLink to="/login">
+                  <Button variant="link">Login</Button>
+                </NavLink>
+              )}
               <Link to="/register">
                 <Button variant="link">Register</Button>
               </Link>

@@ -5,18 +5,26 @@ import { FaGoogle, FaGithub } from "react-icons/fa";
 import { Link } from "react-router-dom";
 import { AuthContext } from "../../UserContext/UserContext";
 const Login = () => {
-  const { googleSignIn } = useContext(AuthContext);
+  const { googleSignIn, signInUser, githubSignIn, user } =
+    useContext(AuthContext);
   const handleSubmit = (event) => {
     event.preventDefault();
     const form = event.target;
     const name = form.name.value;
     const email = form.email.value;
     const password = form.password.value;
-
+    signInUser(email, password)
+      .then((result) => {
+        const user = result.user;
+      })
+      .catch((error) => console.error(error));
     form.reset();
   };
   const handleGoogleSignIn = () => {
     googleSignIn();
+  };
+  const handleGithubSignIn = () => {
+    githubSignIn();
   };
   return (
     <div className="w-50 mx-auto">
@@ -45,6 +53,7 @@ const Login = () => {
                   <button
                     type="button"
                     className="btn btn-light btn-floating mx-1"
+                    onClick={handleGithubSignIn}
                   >
                     <FaGithub></FaGithub>
                   </button>
