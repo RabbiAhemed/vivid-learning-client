@@ -11,8 +11,8 @@ const Course = ({ course }) => {
         <Card.Title>{name}</Card.Title>
         <Card.Text>by {author}</Card.Text>
         <Card.Text>{rating.rate} ratings</Card.Text>
-        <Card.Text>{rating.count} views</Card.Text>
-        <Button variant="primary">Go somewhere</Button>
+        <Card.Text>{rating.count} reviews</Card.Text>
+        <Button variant="primary">View</Button>
       </Card.Body>
     </Card>
   );

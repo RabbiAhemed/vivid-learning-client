@@ -2,11 +2,12 @@ import logo from "./logo.svg";
 import "./App.css";
 import { createBrowserRouter, RouterProvider } from "react-router-dom";
 import Main from "./layouts/Main";
-import Home from "./components/Home/Home";
+import Home from "./components/CoursesHome/CoursesHome";
 import Login from "./components/Login/Login";
 import Register from "./components/Register/Register";
 import Courses from "./components/Courses/Courses";
 import Course from "./components/Course/Course";
+import CoursesHome from "./components/CoursesHome/CoursesHome";
 
 function App() {
   const router = createBrowserRouter([
@@ -28,12 +29,18 @@ function App() {
         },
         {
           path: "/courses",
-          element: <Courses></Courses>,
-          loader: async () => {
-            return fetch(
-              "https://server-side-vivid-learning-bing6n4j9-rabbiahemed.vercel.app/allCourses"
-            );
-          },
+          element: <CoursesHome></CoursesHome>,
+          children: [
+            {
+              path: "/courses",
+              element: <Courses></Courses>,
+              loader: async ({ params }) => {
+                return fetch(
+                  "https://server-side-vivid-learning-bing6n4j9-rabbiahemed.vercel.app/allCourses"
+                );
+              },
+            },
+          ],
         },
         {
           path: "/course/:courseId",
