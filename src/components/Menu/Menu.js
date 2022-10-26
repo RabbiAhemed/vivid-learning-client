@@ -3,7 +3,8 @@ import Nav from "react-bootstrap/Nav";
 import Navbar from "react-bootstrap/Navbar";
 import React, { useContext, useState } from "react";
 import "./Menu.css";
-
+import Tippy from "@tippyjs/react";
+import "tippy.js/dist/tippy.css";
 import Button from "react-bootstrap/Button";
 
 import { Link } from "react-router-dom";
@@ -12,14 +13,11 @@ import { AuthContext } from "../../UserContext/UserContext";
 
 const Menu = () => {
   const { user, logOutUser } = useContext(AuthContext);
-  const showName = ({ user }) => {
-    const name = user.displayName;
-  };
 
   return (
     <Navbar collapseOnSelect expand="lg" bg="info" variant="dark">
       <Container className="text-danger">
-        <Navbar.Brand to="/" className="logo-pair">
+        <Link to="/" className="logo-pair">
           <img
             src="https://i.ibb.co/dtBX1L6/downloader-transparent.png"
             alt="downloader-transparent"
@@ -27,7 +25,7 @@ const Menu = () => {
             className="logo"
           />
           <h3 className="vivid">Vivid Learning</h3>
-        </Navbar.Brand>
+        </Link>
         <Navbar.Toggle aria-controls="responsive-navbar-nav" />
 
         <Navbar.Collapse id="responsive-navbar-nav">
@@ -45,20 +43,16 @@ const Menu = () => {
 
           <Nav>
             {user && user?.uid ? (
-              <Link>
-                <Button
-                  onClick={logOutUser}
-                  className="p-2 fw-bold text-white"
-                  variant="info"
-                >
-                  Logout
-                </Button>
-              </Link>
+              <Button
+                onClick={logOutUser}
+                className="mb-2 fw-bold text-white"
+                variant="info"
+              >
+                Logout
+              </Button>
             ) : (
-              <Link to="/login">
-                <Button className="p-2 fw-bold text-white" variant="info">
-                  Login
-                </Button>
+              <Link className="p-2" to="/login">
+                Login
               </Link>
             )}
             <Link className="p-2" to="/register">
@@ -76,18 +70,15 @@ const Menu = () => {
             </Link>
 
             {user?.photoURL && (
-              <Link
-                onMouseEnter={() => showName(user)}
-                className="left-part"
-                to="/login"
-              >
-                <img
-                  src={user.photoURL}
-                  alt="removed-bg"
-                  border="0"
-                  title={user.displayName}
-                  className="user-image rounded-circle border border-primary "
-                />
+              <Link className="left-part" to="/login">
+                <Tippy content={user?.displayName}>
+                  <img
+                    src={user.photoURL}
+                    alt="removed-bg"
+                    border="0"
+                    className="user-image rounded-circle border border-primary "
+                  />
+                </Tippy>
               </Link>
             )}
           </Nav>

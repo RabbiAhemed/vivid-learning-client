@@ -7,6 +7,8 @@ import Register from "./components/Register/Register";
 import Courses from "./components/Courses/Courses";
 import Course from "./components/Course/Course";
 import CourseDetail from "./components/CourseDetail/CourseDetail";
+import CheckOut from "./components/checkOut/checkOut";
+import PrivateRoute from "./PrivateRoute";
 
 function App() {
   const router = createBrowserRouter([
@@ -39,6 +41,14 @@ function App() {
               `https://server-side-vivid-learning-bing6n4j9-rabbiahemed.vercel.app/course/${params.id}`
             );
           },
+        },
+        {
+          path: "/checkout/:id",
+          element: (
+            <PrivateRoute>
+              <CheckOut></CheckOut>
+            </PrivateRoute>
+          ),
         },
       ],
     },

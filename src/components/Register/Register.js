@@ -12,12 +12,12 @@ const Register = () => {
     const name = form.name.value;
     const email = form.email.value;
     const password = form.password.value;
-    const imageUrl = form.image.value;
+    const picUrl = form.image.value;
 
     createUser(email, password)
       .then((result) => {
         const user = result.user;
-        user.photoURL = imageUrl;
+        user.photoURL = picUrl;
 
         displayName(name)
           .then(() => {
@@ -30,7 +30,7 @@ const Register = () => {
           });
         user.displayName = name;
         setSuccess(true);
-        // picture = imageUrl;
+
         form.reset();
       })
       .catch((error) => console.log(error));
@@ -40,12 +40,12 @@ const Register = () => {
       {success ? (
         <h4 className="text-success">Registration successful</h4>
       ) : (
-        <h2 className="text-center">Please Register</h2>
+        <h2 className="text-center">Let's get started</h2>
       )}
 
       <Form onSubmit={handleSubmit}>
         <Form.Group className="mb-3" controlId="formBasicEmail">
-          <Form.Label>Name</Form.Label>
+          <Form.Label>Full name</Form.Label>
           <Form.Control
             type="text"
             name="name"
@@ -58,7 +58,7 @@ const Register = () => {
           <Form.Control
             type="text"
             name="image"
-            placeholder="Enter name"
+            placeholder="Enter url"
             required
           />
         </Form.Group>

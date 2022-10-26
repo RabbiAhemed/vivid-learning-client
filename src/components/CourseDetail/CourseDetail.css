@@ -1,0 +1,12 @@
+.details-container {
+  display: flex;
+  justify-content: space-evenly;
+  align-items: flex-start;
+  background-color: aliceblue;
+}
+.course-image {
+  width: 50%;
+}
+
+.sl-two {
+}
