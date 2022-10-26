@@ -1,18 +1,20 @@
-import React, { useContext } from "react";
+import React, { useContext, useState } from "react";
 import Container from "react-bootstrap/Container";
 import Button from "react-bootstrap/Button";
 import Nav from "react-bootstrap/Nav";
 import Navbar from "react-bootstrap/Navbar";
 import { Link, NavLink } from "react-router-dom";
-import "./NavBar.css";
+// import "./NavBar.css";
 import { AuthContext } from "../../UserContext/UserContext";
+
 const NavBar = () => {
   const { user, logOutUser } = useContext(AuthContext);
   // console.log(picture);
 
-  const showName = () => {
-    console.log("hovered");
+  const showName = ({ user }) => {
+    const name = user.displayName;
   };
+
   return (
     <div className="menu fw-bold">
       <Navbar bg="" expand="lg">
@@ -40,14 +42,15 @@ const NavBar = () => {
             </NavLink>
             {user?.photoURL && (
               <NavLink
-                onMouseEnter={showName}
+                onMouseEnter={() => showName(user)}
                 className="left-part"
                 to="/login"
               >
                 <img
-                  src="https://i.ibb.co/c25GsfB/removed-bg.png"
+                  src={user.photoURL}
                   alt="removed-bg"
                   border="0"
+                  title={user.displayName}
                   className="user-image rounded-circle border border-primary "
                 />
               </NavLink>

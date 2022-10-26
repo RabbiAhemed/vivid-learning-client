@@ -1,0 +1,13 @@
+@media only screen and (min-width: 768px) {
+  .courses {
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    grid-gap: 1%;
+  }
+}
+
+.ratings {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
