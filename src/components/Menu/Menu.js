@@ -1,7 +1,7 @@
 import Container from "react-bootstrap/Container";
 import Nav from "react-bootstrap/Nav";
 import Navbar from "react-bootstrap/Navbar";
-import React, { useContext, useState } from "react";
+import React, { useContext, useState, useEffect } from "react";
 import "./Menu.css";
 import Tippy from "@tippyjs/react";
 import "tippy.js/dist/tippy.css";
@@ -13,9 +13,14 @@ import { AuthContext } from "../../UserContext/UserContext";
 
 const Menu = () => {
   const { user, logOutUser } = useContext(AuthContext);
+  const [theme, setTheme] = useState("light-theme");
+
+  const handleToggleMode = () => {
+    theme === "light-theme" ? setTheme("dark-theme") : setTheme("light-theme");
+  };
 
   return (
-    <Navbar collapseOnSelect expand="lg" bg="info" variant="dark">
+    <Navbar collapseOnSelect expand="lg" bg="info" variant="dark" id="myNav">
       <Container className="text-danger">
         <Link to="/" className="logo-pair">
           <img
@@ -58,18 +63,18 @@ const Menu = () => {
             <Link className="p-2" to="/register">
               Register
             </Link>
+
             <Link>
-              <Button className="p-2 fw-bold text-white" variant="info">
-                Light
-              </Button>
-            </Link>
-            <Link>
-              <Button className="p-2 fw-bold text-white" variant="info">
-                Dark
+              <Button
+                className="p-2 fw-bold text-white"
+                variant="info"
+                onClick={handleToggleMode}
+              >
+                {theme}
               </Button>
             </Link>
 
-            {user?.photoURL && (
+            {(user?.photoURL || user?.email) && (
               <Link className="left-part" to="/login">
                 <Tippy content={user?.displayName}>
                   <img

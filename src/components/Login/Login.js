@@ -5,7 +5,7 @@ import { FaGoogle, FaGithub } from "react-icons/fa";
 import { Link, useLocation, useNavigate } from "react-router-dom";
 import { AuthContext } from "../../UserContext/UserContext";
 const Login = () => {
-  const { googleSignIn, signInUser, githubSignIn, user } =
+  const { googleSignIn, signInUser, githubSignIn, setUser } =
     useContext(AuthContext);
   const navigate = useNavigate();
   const location = useLocation();
@@ -20,10 +20,12 @@ const Login = () => {
     signInUser(email, password)
       .then((result) => {
         const user = result.user;
+        // console.log(result.user);
+        setUser(user);
+        form.reset();
         navigate(from, { replace: true });
       })
       .catch((error) => console.error(error));
-    form.reset();
   };
   const handleGoogleSignIn = () => {
     googleSignIn();
@@ -82,7 +84,7 @@ const Login = () => {
             Login
           </Button>
           <p className="small fw-bold mt-2 pt-1 mb-0">
-            Dont have an account?
+            Don't have an account?
             <Link to="/register" className="link-success">
               Register
             </Link>

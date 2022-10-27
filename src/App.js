@@ -5,7 +5,6 @@ import Main from "./layouts/Main";
 import Login from "./components/Login/Login";
 import Register from "./components/Register/Register";
 import Courses from "./components/Courses/Courses";
-import Course from "./components/Course/Course";
 import CourseDetail from "./components/CourseDetail/CourseDetail";
 import CheckOut from "./components/checkOut/checkOut";
 import PrivateRoute from "./PrivateRoute";

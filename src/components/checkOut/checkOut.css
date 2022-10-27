@@ -1,0 +1,36 @@
+.body {
+  background-color: aliceblue;
+}
+.checkout-container {
+  border-radius: 25%;
+}
+.course-img {
+  width: 20%;
+}
+
+.header {
+  display: flex;
+  justify-content: space-evenly;
+  align-items: center;
+  background-color: skyblue;
+}
+.infos {
+  background-color: powderblue;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  text-align: start;
+}
+.info-left {
+  display: flex;
+  justify-content: start;
+  align-items: center;
+}
+.title-info {
+  margin-left: 2%;
+}
+.italic-name {
+  font-style: italic;
+  color: white;
+  /* font-weight: 800; */
+}

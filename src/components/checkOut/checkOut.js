@@ -1,5 +1,9 @@
 import React, { useEffect, useState } from "react";
 import { useParams } from "react-router-dom";
+import "./checkOut.css";
+import { FaDownload } from "react-icons/fa";
+import Pdf from "react-to-pdf";
+const ref = React.createRef();
 
 const CheckOut = () => {
   const courseId = useParams();
@@ -12,38 +16,39 @@ const CheckOut = () => {
       .then((response) => response.json())
       .then((data) => setCourseDetail(data));
   }, []);
+  const { name, price, description, image, rating, duration, author, outcome } =
+    courseDetail;
   return (
-    <div>
-      {/*  */}
-      <label htmlFor="country" aria-required>
-        Country
-      </label>
+    <div className="w-75 mx-auto p-5 my-5 checkout-container">
+      <Pdf targetRef={ref} filename="code-example.pdf">
+        {({ toPdf }) => (
+          <button
+            className="fw-bold text-white bg-warning p-2 rounded"
+            onClick={toPdf}
+          >
+            Download Pdf<FaDownload></FaDownload>
+          </button>
+        )}
+      </Pdf>
+      <div className="header">
+        <h4 className="fw-bold text-white p-3 my-2">
+          Thank You for purchasing <span className="dynamic-name">{name}</span>
+        </h4>
+      </div>
 
-      <select name="countries" id="countries" required>
-        <option value="bangladesh">Bangladesh</option>
-        <option value="usa">USA</option>
-        <option value="england">England</option>
-        <option value="australia">Australia</option>
-      </select>
-
-      {/*
-       */}
-      <form action="/action_page.php">
-        <p>Payment Method</p>
-          <input type="radio" id="cc" name="credit-card" value="credit" /> {" "}
-        <label for="html">Credit/Debit Card</label>
-        <br />
-          <input type="radio" id="css" name="fav_language" value="CSS" /> {" "}
-        <label for="css">CSS</label>
-        <br /> {" "}
-        <input
-          type="radio"
-          id="javascript"
-          name="fav_language"
-          value="JavaScript"
-        />
-          <label for="javascript">JavaScript</label>
-      </form>
+      <div className="infos  p-3 text-white">
+        <div className="info-left">
+          <img src={image} alt="" className="course-img" />
+          <div className="title-info">
+            <h5 className="fw-bold">{name}</h5>
+            <p className="italic-name font-white">{author}</p>
+          </div>
+        </div>
+        <div className="info-right">
+          <h4>${price}</h4>
+        </div>
+      </div>
+      <div ref={ref}></div>
     </div>
   );
 };

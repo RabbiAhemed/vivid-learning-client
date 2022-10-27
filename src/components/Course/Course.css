@@ -3,3 +3,18 @@
   justify-content: space-between;
   align-items: center;
 }
+
+@media only screen and (min-width: 768px) {
+  .course-card {
+    margin-top: 5%;
+  }
+  .course-image {
+    height: 180px;
+    width: 162;
+  }
+}
+@media only screen and (max-width: 468px) {
+  .course-card {
+    margin-top: 5%;
+  }
+}

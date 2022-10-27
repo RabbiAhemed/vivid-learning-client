@@ -1,9 +1,8 @@
-@media only screen and (min-width: 768px) {
-  .courses {
-    display: grid;
-    grid-template-columns: repeat(3, 1fr);
-    grid-gap: 1%;
-  }
+.side-links a {
+  text-decoration: none;
+  color: black;
+  font-weight: bold;
+  /* background-color: rgb(146, 61, 165); */
 }
 
 .ratings {
@@ -14,4 +13,17 @@
 .side-menu {
   background-color: aliceblue;
   padding: 8% 10%;
+}
+@media only screen and (min-width: 768px) {
+  .courses {
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    grid-gap: 1%;
+  }
+}
+
+@media only screen and (max-width: 468px) {
+  .courses {
+    margin-top: 5%;
+  }
 }

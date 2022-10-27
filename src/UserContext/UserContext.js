@@ -41,6 +41,10 @@ const UserContext = ({ children }) => {
     setLoading(true);
     return updateProfile(auth.currentUser, { displayName: name });
   };
+  const displayPicture = (picUrl) => {
+    setLoading(true);
+    return updateProfile(auth.currentUser, { photoURL: picUrl });
+  };
 
   const googleSignIn = () => {
     setLoading(true);
@@ -53,6 +57,7 @@ const UserContext = ({ children }) => {
   useEffect(() => {
     const unsubscribe = onAuthStateChanged(auth, (currentUser) => {
       setUser(currentUser);
+      console.log(currentUser);
       setLoading(false);
     });
     return () => {
@@ -68,7 +73,9 @@ const UserContext = ({ children }) => {
     signInUser,
     logOutUser,
     displayName,
+    displayPicture,
     loading,
+    setUser,
   };
   return (
     <AuthContext.Provider value={authInfo}>{children}</AuthContext.Provider>

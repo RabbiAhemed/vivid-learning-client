@@ -11,7 +11,7 @@ const Courses = () => {
       <Row>
         <Col className="side-menu">
           {courses.map((course) => (
-            <p key={course.id}>
+            <p className="side-links" key={course.id}>
               <Link to={`/course/${course.id}`}>{course.name}</Link>
             </p>
           ))}

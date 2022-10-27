@@ -10,8 +10,8 @@ const Course = ({ course }) => {
     navigate(`/course/${id}`);
   };
   return (
-    <Card style={{ width: "18rem" }}>
-      <Card.Img variant="top" src={image} className="p-1" />
+    <Card style={{ width: "18rem" }} className="course-card fw-bold">
+      <Card.Img variant="top" src={image} className="p-1 course-image" />
       <Card.Body>
         <Card.Title>{name}</Card.Title>
         <Card.Text>by {author}</Card.Text>

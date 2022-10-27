@@ -4,7 +4,7 @@ import Form from "react-bootstrap/Form";
 import { Link } from "react-router-dom";
 import { AuthContext } from "../../UserContext/UserContext";
 const Register = () => {
-  const { createUser, displayName } = useContext(AuthContext);
+  const { createUser, displayName, displayPicture } = useContext(AuthContext);
   const [success, setSuccess] = useState(false);
   const handleSubmit = (event) => {
     event.preventDefault();
@@ -17,7 +17,6 @@ const Register = () => {
     createUser(email, password)
       .then((result) => {
         const user = result.user;
-        user.photoURL = picUrl;
 
         displayName(name)
           .then(() => {
@@ -28,7 +27,16 @@ const Register = () => {
             // An error occurred
             // ...
           });
-        user.displayName = name;
+        displayPicture(picUrl)
+          .then(() => {
+            // Profile updated!
+            // ...
+          })
+          .catch((error) => {
+            // An error occurred
+            // ...
+          });
+        // user.displayName = name;
         setSuccess(true);
 
         form.reset();
