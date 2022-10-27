@@ -8,6 +8,10 @@ import Courses from "./components/Courses/Courses";
 import CourseDetail from "./components/CourseDetail/CourseDetail";
 import CheckOut from "./components/checkOut/checkOut";
 import PrivateRoute from "./PrivateRoute";
+import Home from "./components/Home/Home";
+import Blog from "./components/Blog/Blog";
+import Faq from "./components/Faq/Faq";
+import NotFound from "./components/NotFound/NotFound";
 
 function App() {
   const router = createBrowserRouter([
@@ -15,6 +19,10 @@ function App() {
       path: "/",
       element: <Main></Main>,
       children: [
+        {
+          path: "/",
+          element: <Home></Home>,
+        },
         {
           path: "/login",
           element: <Login></Login>,
@@ -48,6 +56,18 @@ function App() {
               <CheckOut></CheckOut>
             </PrivateRoute>
           ),
+        },
+        {
+          path: "/blog",
+          element: <Blog></Blog>,
+        },
+        {
+          path: "/faq",
+          element: <Faq></Faq>,
+        },
+        {
+          path: "/*",
+          element: <NotFound></NotFound>,
         },
       ],
     },

@@ -4,7 +4,7 @@
   align-items: center;
 }
 
-@media only screen and (min-width: 768px) {
+@media only screen and (min-width: 992px) {
   .course-card {
     margin-top: 5%;
   }
@@ -12,9 +12,21 @@
     height: 180px;
     width: 162;
   }
+  .courses {
+    margin-bottom: 10%;
+  }
+  .side-menu {
+    margin: 10% 2%;
+  }
 }
-@media only screen and (max-width: 468px) {
+@media only screen and (max-width: 425px) {
   .course-card {
     margin-top: 5%;
+  }
+  .courses {
+    margin-bottom: 10%;
+  }
+  .side-menu {
+    margin: 10% 2%;
   }
 }

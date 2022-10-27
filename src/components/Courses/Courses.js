@@ -17,7 +17,7 @@ const Courses = () => {
           ))}
         </Col>
         <Col>
-          <div className="courses">
+          <div className="courses ">
             {courses.map((course) => (
               <Course key={course.id} course={course}></Course>
             ))}

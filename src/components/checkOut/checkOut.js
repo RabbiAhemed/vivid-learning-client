@@ -36,20 +36,19 @@ const CheckOut = () => {
         </Pdf>
       </div>
 
-      <div className="infos  p-3 text-white">
-        <div className="info-left">
-          <img src={image} alt="" className="course-img" />
-          <div className="title-info">
-            <h5 className="fw-bold">{name}</h5>
-            <p className="italic-name font-white">{author}</p>
+      <div ref={ref}>
+        <div className="infos  p-3 ">
+          <div className="info-left">
+            <img src={image} alt="" className="course-img" />
+            <div className="title-info">
+              <h5 className="fw-bold">{name}</h5>
+              <p className="italic-name">{author}</p>
+            </div>
+          </div>
+          <div className="info-right">
+            <h4>${price}</h4>
           </div>
         </div>
-        <div className="info-right">
-          <h4>${price}</h4>
-        </div>
-      </div>
-      <div ref={ref}>
-        {name},{description}
       </div>
     </div>
   );

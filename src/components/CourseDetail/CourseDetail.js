@@ -21,7 +21,6 @@ const CourseDetail = () => {
       <div className="sl-one">
         <div className="main-info">
           <img src={image} alt="" className="course-image" />
-
           <h2>{name}</h2>
           <p>{description}</p>
           <p>

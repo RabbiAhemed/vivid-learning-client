@@ -13,10 +13,10 @@ import { AuthContext } from "../../UserContext/UserContext";
 
 const Menu = () => {
   const { user, logOutUser } = useContext(AuthContext);
-  const [theme, setTheme] = useState("light-theme");
+  const [theme, setTheme] = useState("light");
 
   const handleToggleMode = () => {
-    theme === "light-theme" ? setTheme("dark-theme") : setTheme("light-theme");
+    theme === "light" ? setTheme("dark") : setTheme("light");
   };
 
   return (

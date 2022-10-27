@@ -1,0 +1,15 @@
+.footer-logo {
+  width: 5%;
+}
+.footer {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  background-color: teal;
+}
+
+@media screen and (max-width: 425px) {
+  .footer-logo {
+    width: 12%;
+  }
+}

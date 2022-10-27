@@ -14,7 +14,7 @@
   background-color: aliceblue;
   padding: 8% 10%;
 }
-@media only screen and (min-width: 768px) {
+@media only screen and (min-width: 992px) {
   .courses {
     display: grid;
     grid-template-columns: repeat(3, 1fr);
@@ -22,7 +22,7 @@
   }
 }
 
-@media only screen and (max-width: 468px) {
+@media only screen and (max-width: 425px) {
   .courses {
     margin-top: 5%;
   }
