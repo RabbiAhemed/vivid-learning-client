@@ -20,20 +20,20 @@ const CheckOut = () => {
     courseDetail;
   return (
     <div className="w-75 mx-auto p-5 my-5 checkout-container">
-      <Pdf targetRef={ref} filename="code-example.pdf">
-        {({ toPdf }) => (
-          <button
-            className="fw-bold text-white bg-warning p-2 rounded"
-            onClick={toPdf}
-          >
-            Download Pdf<FaDownload></FaDownload>
-          </button>
-        )}
-      </Pdf>
       <div className="header">
         <h4 className="fw-bold text-white p-3 my-2">
           Thank You for purchasing <span className="dynamic-name">{name}</span>
         </h4>
+        <Pdf targetRef={ref} filename="code-example.pdf">
+          {({ toPdf }) => (
+            <button
+              className="fw-bold text-white bg-warning p-2 rounded"
+              onClick={toPdf}
+            >
+              <FaDownload></FaDownload>
+            </button>
+          )}
+        </Pdf>
       </div>
 
       <div className="infos  p-3 text-white">
@@ -48,7 +48,9 @@ const CheckOut = () => {
           <h4>${price}</h4>
         </div>
       </div>
-      <div ref={ref}></div>
+      <div ref={ref}>
+        {name},{description}
+      </div>
     </div>
   );
 };
