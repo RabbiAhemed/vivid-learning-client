@@ -1,10 +1,11 @@
-import React, { useContext } from "react";
+import React, { useContext, useState } from "react";
 import Button from "react-bootstrap/Button";
 import Form from "react-bootstrap/Form";
 import { FaGoogle, FaGithub } from "react-icons/fa";
 import { Link, useLocation, useNavigate } from "react-router-dom";
 import { AuthContext } from "../../UserContext/UserContext";
 const Login = () => {
+  const [error, setError] = useState("");
   const { googleSignIn, signInUser, githubSignIn, setUser } =
     useContext(AuthContext);
   const navigate = useNavigate();
@@ -25,7 +26,7 @@ const Login = () => {
         form.reset();
         navigate(from, { replace: true });
       })
-      .catch((error) => console.error(error));
+      .catch((error) => console.error(error.message));
   };
   const handleGoogleSignIn = () => {
     googleSignIn();
